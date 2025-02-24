@@ -59,6 +59,69 @@
 	};
 	loader();
 
+// Product Modal Functions
+function openProductModal(imgSrc, title, price, description) {
+	const modal = document.getElementById('productModal');
+	const modalImg = document.getElementById('modalImage');
+	const modalTitle = document.getElementById('modalTitle');
+	const modalPrice = document.getElementById('modalPrice');
+	const modalDesc = document.getElementById('modalDescription');
+  
+	modalImg.src = imgSrc;
+	modalTitle.textContent = title;
+	modalPrice.textContent = price;
+	modalDesc.textContent = description;
+	modal.style.display = 'block';
+  }
+  
+  function closeProductModal() {
+	const modal = document.getElementById('productModal');
+	modal.style.display = 'none';
+  }
+  
+  // Close modal when clicking outside
+  window.onclick = function(event) {
+	const modal = document.getElementById('productModal');
+	if (event.target == modal) {
+	  modal.style.display = 'none';
+	}
+  }
+  
+  // Initialize product click handlers
+  document.addEventListener('DOMContentLoaded', function() {
+	const products = document.querySelectorAll('.product');
+	
+	products.forEach(product => {
+	  product.addEventListener('click', function(e) {
+		e.preventDefault();
+		
+		const imgSrc = this.querySelector('img').src;
+		const title = this.querySelector('h3 a').textContent;
+		const priceElement = this.querySelector('.price');
+		let price = '';
+		
+		if (priceElement.querySelector('.price-sale')) {
+		  price = priceElement.querySelector('.price-sale').textContent;
+		} else {
+		  price = priceElement.querySelector('span').textContent;
+		}
+		
+		// You can customize the description for each product
+		const descriptions = {
+		  'Cá Hồi Mayo': 'Cơm nắm với nhân cá hồi tươi ngon, trộn mayo thơm béo.',
+		  'Cá Ngừ Mayo': 'Cơm nắm với nhân cá ngừ tươi ngon, trộn mayo thơm béo.',
+		  'Tôm Thịt Mayo': 'Cơm nắm với nhân tôm thịt tươi ngon, trộn mayo thơm béo.',
+		  'Gà Teriyaki': 'Cơm nắm với nhân gà teriyaki thơm ngon, đậm đà.',
+		  'Xúc xích Mayo': 'Cơm nắm với nhân xúc xích tươi ngon, trộn mayo thơm béo.'
+		};
+		
+		const description = descriptions[title] || 'Cơm nắm Onigiri thơm ngon, đậm đà hương vị Nhật Bản.';
+		
+		openProductModal(imgSrc, title, price, description);
+	  });
+	});
+  });
+
 	// Scrollax
    $.Scrollax();
 
