@@ -10287,3 +10287,95 @@ textarea.form-control {
   margin: 0 5px;
   font-size: 18px;
 }
+/* Định nghĩa promotion-box */
+.promotion-box {
+  border: 3px solid #CF0106;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  padding: 30px;
+  width: 100%; /* Đảm bảo chiếm toàn bộ chiều rộng của cột */
+}
+
+/* Hiệu ứng hover */
+.promotion-box:hover {
+  border-color: #B00005;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Định dạng timer */
+#timer {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Định dạng countdown */
+#countdown {
+  background-color: #FFE6E6;
+  padding: 15px 25px;
+  border: 2px solid #CF0106;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #CF0106;
+  display: inline-block; /* Giữ nằm ngang */
+  white-space: normal; /* Cho phép xuống dòng khi cần */
+  max-width: 100%; /* Đảm bảo không vượt khung */
+  word-break: break-word; /* Phá từ nếu cần */
+}
+
+/* Định dạng khi đếm ngược (chưa hết hạn) */
+#countdown:not(.expired) {
+  font-size: 1.2rem;
+  padding: 10px 20px;
+}
+
+/* Định dạng icon */
+#countdown::before {
+  content: "⏰ ";
+  color: #CF0106;
+  font-size: 1.4rem;
+}
+
+#countdown::after {
+  content: " 🎉";
+  color: #CF0106;
+  font-size: 1.4rem;
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 768px) {
+  .promotion-box {
+    padding: 15px; /* Giảm padding */
+    width: 100%; /* Đảm bảo chiếm toàn bộ */
+  }
+
+  .promotion-box p {
+    font-size: 0.9rem; /* Giảm kích thước chữ trong danh sách */
+    line-height: 1.4; /* Tăng khoảng cách dòng */
+  }
+
+  #countdown {
+    font-size: 0.9rem; /* Giảm kích thước chữ */
+    padding: 10px 15px; /* Giảm padding */
+    white-space: normal; /* Cho phép xuống dòng */
+    width: 100%; /* Đảm bảo không tràn */
+  }
+}
+
+/* Đảm bảo nội dung hiển thị tốt */
+.promotion-box .subheading,
+.promotion-box h2,
+.promotion-box p,
+.promotion-box h3 {
+  color: #000000;
+}
+
+.promotion-box .time,
+.promotion-box .price,
+.promotion-box .price a {
+  color: #CF0106 !important;
+}
